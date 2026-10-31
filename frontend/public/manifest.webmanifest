@@ -1,0 +1,31 @@
+{
+  "name": "Weather-Aware Truck Routing",
+  "short_name": "TruckWeather",
+  "description": "Safe, weather-informed freight routing with live checkpoints & 48h corridor heatmap.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#121316",
+  "theme_color": "#2a78d6",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/pwa-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": [
+    "navigation",
+    "weather",
+    "productivity",
+    "utilities"
+  ]
+}

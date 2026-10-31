@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+backend/db.sqlite3
+backend/staticfiles/
+.pytest_cache/
+
+# Node
+node_modules/
+frontend/dist/
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+!.env.prod.example
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+
+# Assignment brief (private)
+fs-spotter.pdf

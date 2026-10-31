@@ -1,0 +1,51 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: spo_backend
+    restart: unless-stopped
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    environment:
+      - DJANGO_DEBUG=False
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY:-production-secret-key-change-me}
+      - DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1,backend,frontend,0.0.0.0
+      - CORS_ALLOWED_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
+      - DJANGO_DB_PATH=/app/data/db.sqlite3
+      - GUNICORN_WORKERS=3
+      - GUNICORN_THREADS=2
+      - OSRM_URL=https://router.project-osrm.org
+      - NOMINATIM_URL=https://nominatim.openstreetmap.org/search
+      - PHOTON_URL=https://photon.komoot.io/api/
+      - HTTP_USER_AGENT=weather-aware-truck-routing/0.1 (+https://github.com/)
+    env_file:
+      - path: .env
+        required: false
+      - path: ./backend/.env
+        required: false
+    volumes:
+      - backend_data:/app/data
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/api/health/ || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: spo_frontend
+    restart: unless-stopped
+    ports:
+      - "${FRONTEND_PORT:-5173}:5173"
+    environment:
+      - BACKEND_URL=http://backend:8000
+    depends_on:
+      backend:
+        condition: service_healthy
+
+volumes:
+  backend_data:
