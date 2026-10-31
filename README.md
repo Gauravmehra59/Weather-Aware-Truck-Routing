@@ -4,6 +4,9 @@ A React + Django web app that helps truck drivers evaluate alternative routes an
 
 Built for the Full Stack Developer assessment.
 
+> 🌐 **Live Application:** [https://watr.gauravmehra.dev](https://watr.gauravmehra.dev/)  
+> *(The domain prefix **`watr`** is an acronym for **W**eather-**A**ware **T**ruck **R**outing)*
+
 - **Backend:** Django 5 + Django REST Framework (`backend/`)
 - **Frontend:** React 19 + Vite + Leaflet (`frontend/`)
 - **APIs:** OSRM (routing), Open-Meteo (weather forecasts), Photon (autocomplete), Nominatim (geocoding fallback)
@@ -187,4 +190,7 @@ make build
 ## Author & Contact
 
 **Gaurav Mehra**  
-Email: [gauravmehra930@gmail.com](mailto:gauravmehra930@gmail.com)  
+- **Live Demo:** [https://watr.gauravmehra.dev](https://watr.gauravmehra.dev/)  
+  *(**WATR** stands for **W**eather-**A**ware **T**ruck **R**outing)*
+- **Email:** [gauravmehra930@gmail.com](mailto:gauravmehra930@gmail.com)  
+- **GitHub:** [https://github.com/Gauravmehra59/Weather-Aware-Truck-Routing](https://github.com/Gauravmehra59/Weather-Aware-Truck-Routing)  
