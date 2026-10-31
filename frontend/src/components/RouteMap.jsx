@@ -95,7 +95,10 @@ function FocusSelectedRoute({ route, request, mobileTab }) {
   const map = useMap()
   const handled = useRef(0)
   useEffect(() => {
-    if (!route || request === handled.current || mobileTab === 'plan') return
+    if (!route || request === handled.current) return
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768
+    if (isMobile && mobileTab === 'plan') return
+
     handled.current = request
     const bounds = L.latLngBounds(route.geometry)
     map.invalidateSize({ pan: false })
@@ -110,12 +113,13 @@ function FitToRoutes({ routes, mobileTab }) {
   const map = useMap()
   useEffect(() => {
     if (!routes?.length) return
-    if (mobileTab === 'plan') return
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768
+    if (isMobile && mobileTab === 'plan') return
 
     const bounds = L.latLngBounds(routes.flatMap((route) => route.geometry))
     const fit = () => {
       map.invalidateSize({ pan: false })
-      map.fitBounds(bounds, { padding: [32, 32], maxZoom: 13 })
+      map.fitBounds(bounds, { padding: [40, 40], maxZoom: 13 })
     }
 
     fit()

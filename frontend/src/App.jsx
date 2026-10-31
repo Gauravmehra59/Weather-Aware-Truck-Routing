@@ -50,6 +50,7 @@ export default function App() {
       if (requestId !== planRequest.current) return
       setResult(data)
       setSelectedId(data.recommended_route_id)
+      setFocusRequest((n) => n + 1)
       setHeatmap(null)
       setHour(0)
       // Switch mobile view to map automatically once routes are calculated
